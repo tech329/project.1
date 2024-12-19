@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Staff Login</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ddd;
+        }
+        select, input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            color: #333;
+            font-size: 16px;
+            outline: none;
+        }
+        select::placeholder, input::placeholder {
+            color: #999;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Staff Login</h2>
+        <form action="/submit-login" method="POST" onsubmit="return validateLogin(event)">
+            <label for="staff-name">Staff Name:</label>
+            <select id="staff-name" name="staff-name" required>
+                <option value="">Select Staff</option>
+                <option value="Menka">Menka</option>
+                <option value="Elangovan">Elangovan</option>
+                <option value="Ruba">Ruba</option>
+                <option value="Renuka">Renuka</option>
+            </select>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        const staffPasswords = {
+            Menka: "pass1",
+            Elangovan: "pass2",
+            Ruba: "pass3",
+            Renuka: "pass4"
+        };
+
+        function validateLogin(event) {
+            event.preventDefault();
+            const staffName = document.getElementById("staff-name").value;
+            const password = document.getElementById("password").value;
+
+            if (staffPasswords[staffName] && staffPasswords[staffName] === password) {
+                alert(`Welcome, ${staffName}!`);
+                // Perform the login logic or redirect here
+            } else {
+                alert("Invalid staff name or password.");
+            }
+        }
+    </script>
+</body>
+</html>
+
+

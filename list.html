@@ -1,0 +1,124 @@
+
+
+<!-- Next Page: attendance.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4facfe;
+        }
+
+        .list-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .list {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        .list h2 {
+            color: #00c6fb;
+        }
+
+        .list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list li {
+            margin-bottom: 10px;
+        }
+
+        .summary {
+            margin-top: 20px;
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Records</h1>
+
+    <div id="attendanceData">
+        <div class="list-container">
+            <div class="list">
+                <h2>Present</h2>
+                <ul id="presentList"></ul>
+            </div>
+            <div class="list">
+                <h2>Absent</h2>
+                <ul id="absentList"></ul>
+            </div>
+        </div>
+
+        <div class="summary">
+            <p id="totalStudents"></p>
+            <p id="presentPercentage"></p>
+            <p id="absentPercentage"></p>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const registerNumber = params.get('register-number');
+        const date = params.get('date');
+        const status = params.get('status');
+
+        const presentList = document.getElementById('presentList');
+        const absentList = document.getElementById('absentList');
+        const totalStudents = document.getElementById('totalStudents');
+        const presentPercentage = document.getElementById('presentPercentage');
+        const absentPercentage = document.getElementById('absentPercentage');
+
+        let presentCount = 0;
+        let absentCount = 0;
+
+        if (status === 'present') {
+            presentList.innerHTML += `<li>${registerNumber} - ${date}</li>`;
+            presentCount++;
+        } else if (status === 'absent') {
+            absentList.innerHTML += `<li>${registerNumber} - ${date}</li>`;
+            absentCount++;
+        }
+
+        const totalCount = presentCount + absentCount;
+        totalStudents.textContent = `Total Students: ${totalCount}`;
+
+        const presentPct = totalCount ? ((presentCount / totalCount) * 100).toFixed(1) : 0;
+        const absentPct = totalCount ? ((absentCount / totalCount) * 100).toFixed(1) : 0;
+
+        presentPercentage.textContent = `Present: ${presentCount} (${presentPct}%)`;
+        absentPercentage.textContent = `Absent: ${absentCount} (${absentPct}%)`;
+    </script>
+</body>
+</html>
+
+
+
+   
