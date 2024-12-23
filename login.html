@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +96,6 @@
             <button type="submit">Login</button>
         </form>
     </div>
-
     <script>
         const staffPasswords = {
             Menka: "pass1",
@@ -111,7 +111,8 @@
 
             if (staffPasswords[staffName] && staffPasswords[staffName] === password) {
                 alert(`Welcome, ${staffName}!`);
-                // Perform the login logic or redirect here
+                // Redirect to the desired page after successful login
+                window.location.href = "C:\Users\HP\Desktop\project\project.1\list.html";
             } else {
                 alert("Invalid staff name or password.");
             }
