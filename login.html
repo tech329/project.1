@@ -1,88 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Staff Login</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-        .login-container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        h2 {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #ddd;
-        }
-        select, input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.7);
-            color: #333;
-            font-size: 16px;
-            outline: none;
-        }
-        select::placeholder, input::placeholder {
-            color: #999;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-        button:hover {
-            transform: scale(1.05);
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-</head>
+   </head>
 <body>
+    <link rel="stylesheet" href="login.css">
+    <div class="heading-container">
+        <h1>Computer Technology</h1>
+        <h2>Welcome to the Staff Portal</h2>
+    </div>
     <div class="login-container">
         <h2>Staff Login</h2>
-        <form action="/submit-login" method="POST" onsubmit="return validateLogin(event)">
+        <form onsubmit="return validateLogin(event)">
             <label for="staff-name">Staff Name:</label>
             <select id="staff-name" name="staff-name" required>
                 <option value="">Select Staff</option>
@@ -96,6 +27,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
     <script>
         const staffPasswords = {
             Menka: "pass1",
@@ -111,8 +43,8 @@
 
             if (staffPasswords[staffName] && staffPasswords[staffName] === password) {
                 alert(`Welcome, ${staffName}!`);
-                // Redirect to the desired page after successful login
-                window.location.href = "C:\Users\HP\Desktop\project\project.1\list.html";
+                // Redirect to the second page (B.Sc. Computer Technology Yearwise Table)
+                window.location.href = "department.html";  // Change to the URL of your yearwise table page
             } else {
                 alert("Invalid staff name or password.");
             }
@@ -120,5 +52,3 @@
     </script>
 </body>
 </html>
-
-
